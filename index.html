@@ -1,0 +1,92 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Press the button!</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+            * {
+                font-family: "Inter", sans-serif;
+            }
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                font-size: 16px;
+                line-height: 1.5;
+                color: rgb(194, 194, 194);
+                background-color: #212121;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            button {
+                cursor: pointer;
+                border: none;
+                outline: none;
+                background-color: #000000;
+                color: rgb(194, 194, 194);
+                font-size: 1.5rem;
+                padding: 2rem 4rem;
+                border-radius: 2em;
+
+                transition: background-color 0.2s ease-in-out,
+                    transform 0.2s ease-in-out;
+            }
+
+            button:hover {
+                background-color: #0b0b0b;
+                transform: scale(1.05);
+            }
+
+            .modal {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: none;
+                transform: translate(-50%, -50%);
+            }
+
+            .modal video {
+                width: 100%;
+                height: 100%;
+
+                transform: scale(0.1);
+                transition: transform 1s ease-in-out;
+            }
+        </style>
+    </head>
+    <body>
+        <button>Mysterious button</button>
+        <div class="modal">
+            <!-- rick roll video -->
+            <video src="roll.mp4"></video>
+        </div>
+
+        <script>
+            const video = document.querySelector("video");
+            const modal = document.querySelector(".modal");
+            let clicked = false;
+
+            document.querySelector("button").addEventListener("click", () => {
+                if (clicked) return;
+                clicked = true;
+                modal.style.display = "block";
+                video.play();
+
+                //slowly scale up
+                setTimeout(() => {
+                    video.style.transform = "scale(2)";
+                }, 10);
+            });
+        </script>
+    </body>
+</html>
